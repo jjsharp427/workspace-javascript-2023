@@ -110,5 +110,5 @@ function draw() {
   //
   fill(0, 0, 0)
   textSize(20)
-  text('Smile', 300, 370)
+  // text('Smile', 300, 370)
 }
