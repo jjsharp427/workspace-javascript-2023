@@ -461,7 +461,7 @@
         <div class="practice">
             <h1>Change Attribute -- Rolling a dice </h1>
             <p> <input type="button" id="roll" value="roll" /> </p>
-            <p> <img src="img/die1.png"> </p>
+            <p> <img src="img/die1.png" id="dieImg"> </p>
             <table>
                 <tr>
                     <th>Result</th>
@@ -474,14 +474,44 @@
                 </tr>
                 <tr>
                     <th>Statistics</th>
-                    <td id="r1"></td>
-                    <td id="r2"></td>
-                    <td id="r3"></td>
-                    <td id="r4"></td>
-                    <td id="r5"></td>
-                    <td id="r6"></td>
+                    <td id="r1">0</td>
+                    <td id="r2">0</td>
+                    <td id="r3">0</td>
+                    <td id="r4">0</td>
+                    <td id="r5">0</td>
+                    <td id="r6">0</td>
                 </tr>
             </table>
+            <script>
+                var stats = [0,0,0,0,0,0];
+                // event and event handler
+                function roll() {
+                    // get random number from 1-6
+                    var num = parseInt(1+(Math.random()*6));
+                    // store data in statistics
+                    stats[num-1]+=1;
+                    console.log(num);
+                    // change the image src attribute
+                    var e = document.getElementById("dieImg");
+                    e.setAttribute("src","img/die"+num+".png");
+                    // store data in statistics
+                    document.getElementById("r"+num).textContent = stats[num-1].toString();
+
+                }
+                document.getElementById("roll").addEventListener("click",roll,false);
+
+                // practice on array
+                // var arr = [1,2,3,4,5,6];
+                // arr[50] = 59;
+                // arr[20] = 24;
+                // arr.push(6);
+                // console.log(arr);
+                // for (var val in arr) {
+                //     console.log(val);
+                // }
+                // arr.forEach(e => console.log(e));
+                              
+            </script>
 
         </div>
 
@@ -504,7 +534,20 @@
                 <img src="img/usca5.jpg" alt="usca">
             </div>
 			<script>
-				
+                var imgList = document.querySelectorAll(".img-container-hide");
+                var index = 0;
+                imgList[index].setAttribute("class","img-container");
+                function changeBanner() {
+                    imgList[index].setAttribute("class","img-container-hide");
+                    index++;
+                    // index = index%5;
+                    if (index>4) {
+                        index = 0;
+                    }
+                    imgList[index].setAttribute("class","img-container");
+                }
+                // auto-update the banner
+                setInterval(changeBanner,3000);
 			</script>
 
 
@@ -540,6 +583,9 @@
                         <input id="lists" type="button" value="List current reservations">
                     </p>
                 </form>
+                <div id="guestList">
+                    
+                </div>
                 <script src="js/hotel.js"></script>
             </div>
 
