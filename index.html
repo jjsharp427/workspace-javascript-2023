@@ -127,18 +127,20 @@
             <h1> Get input from a form </h1>
             <p> Please enter your numbers </p>
             <script>
-                function calculate() {
+                function calculateNum() {
                     // get input from the form
-                    var num = parseInt(document.getElementById("fnum").value);
-                    var num2 = parseInt(document.getElementByName("num2")[0].value);
+                    var num = parseInt(document.getElementById("firstnum").value);
+                    console.log(num);
+                    var num2 = parseInt(document.getElementById("number2").value);
                     // perform calculation
                     var result = num+num2;
+                    console.log(result);
                     //output
                     document.getElementById("result").textContent = "--"+result;
                 }
             </script>
-            <p> <input type="text" name="num1" id="fnum"> + <input type="text" name="num2">
-                <input type="button" value="=" onclick="calculate();">
+            <p> <input type="text" name="num1" id="firstnum"> + <input type="text" id="number2">
+                <input type="button" value="=" onclick="calculateNum();">
                 <label id="result"> ? </label>
             </p>
 
